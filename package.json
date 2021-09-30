@@ -1,0 +1,25 @@
+{
+  "name": "accountyou",
+  "version": "1.0.0",
+  "description": "Small businesses account tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Reuben Frimpong",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "mongoose": "^6.0.6",
+    "mongoose-validators": "^0.1.0",
+    "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}
