@@ -8,7 +8,7 @@ paths:
       - application/json
       parameters:         
       - in: body          
-        name: sign up     
+        name: Sign Up     
         description: Creates a new user
         required: false   
         schema:           
@@ -27,5 +27,16 @@ definitions:
             type: string
           email:
             type: string
+            format: email
           password:
             type: string
+          nextBillingDate:
+            type: string
+            format: date
+          isActive:
+            type: boolean
+            
+    required:
+      - username
+      - email
+      - password        

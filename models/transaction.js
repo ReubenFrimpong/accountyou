@@ -12,17 +12,16 @@ const transactionSchema = mongoose.Schema({
     ref: 'Category',
     required: [true, 'A category is required for a transaction']
   },
-  type:{
+  transactionType:{
     type: String,
     required: [true, 'A type is required for a transaction'],
-    enum: ['income','expenditure']
+    enum: ['income','expense']
   },
-  status:{
-    type: String,
-    required: true,
-    default: 'recurrent',
-    enum: ['fixed', 'recurrent']
+  recurring:{
+    type: Boolean,
+    default: false
   },
+  recurringPeriod: Date,
   amount:{
     type: Float,
   },
@@ -33,5 +32,5 @@ const transactionSchema = mongoose.Schema({
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
 
-const Transaction = mongoose.model('Expense', transactionSchema);
+const Transaction = mongoose.model('Transaction', transactionSchema);
 module.exports = Transaction;

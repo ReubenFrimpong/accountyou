@@ -1,0 +1,36 @@
+paths:
+  /categories/:
+    post:                 
+      tags:               
+        - Category            
+      summary: creates a new category
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: Add Category    
+        description: Creates a new category
+        required: false   
+        schema:           
+          $ref: '#/definitions/Category' 
+      responses:          
+        201:
+          description: An object with category details
+definitions:        
+  Category:
+    type: object
+    properties:
+      category:
+        type: object
+        properties:
+          userId:
+            type: string
+          name:
+            type: string
+          categoryType:
+            type: string
+
+    required:
+      - userId
+      - name
+      - categoryType     

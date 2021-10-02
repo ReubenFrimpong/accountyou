@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema({
-  userId:{
+  userId: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     required: [true, 'A userId is required']
@@ -10,7 +10,7 @@ const categorySchema = new mongoose.Schema({
     type: String,
     required: [true ,'Category name is required']
   },
-  type: {
+  categoryType: {
     type: String,
     required: [true ,'Category type is required'],
     enum: ['income','expenditure']

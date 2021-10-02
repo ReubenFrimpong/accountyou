@@ -20,8 +20,10 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   isActive: {
+    type: Boolean,
     required: true,
     default: true,
+    enum: [true, false]
   },
   createdAt: Date,
   updatedAt: Date,
