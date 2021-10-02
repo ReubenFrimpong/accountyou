@@ -15,5 +15,19 @@ const userSchema = mongoose.Schema({
   password:{
     type: String,
     required: [true, 'A password is required']
-  }
+  },
+  nextBillingDate: {
+    required: true,
+  },
+  isActive: {
+    required: true,
+    default: true,
+  },
+  createdAt: Date,
+  updatedAt: Date,
+},{
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
+
+const User = mongoose.model('User', UserSchema);
+module.exports = User;
