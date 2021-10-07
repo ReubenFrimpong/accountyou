@@ -1,0 +1,22 @@
+type: object
+properties:
+  user:
+    type: object
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+        format: email
+      password:
+        type: string
+      nextBillingDate:
+        type: string
+        format: date
+      isActive:
+        type: boolean
+        
+required:
+  - username
+  - email
+  - password        

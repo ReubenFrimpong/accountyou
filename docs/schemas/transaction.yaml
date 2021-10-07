@@ -1,0 +1,36 @@
+type: object
+properties:
+  transaction: 
+    type: object
+    properties:
+      userId:
+        type: string
+      categoryId:
+        type: string
+        format: email
+      transactionType:
+        type: string
+      recurring:
+        type: boolean
+      recurringPeriod:
+        type: string
+        format: date
+      amount:
+        type: number
+        format: float
+      description: 
+        type: string
+      receipts:
+        type: array
+        items: 
+          type: string
+      date:
+        type: string
+        format: date        
+
+required:
+  - userId
+  - categoryId
+  - transactionType
+  - amount
+  - date     

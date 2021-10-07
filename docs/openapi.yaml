@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  description: API documentation for AccountYou
+  version: 1.0.0
+  title: API Docs
+servers:
+  - url: http://localhost:3000/v1  
+  
+paths:
+  /users:
+    post:
+      summary: Creates a category.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/user.yaml#'
+      responses: 
+        '201':
+          description: Created
+  /categories:
+      post:
+        summary: Creates a category.
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/category.yaml'
+        responses: 
+          '201':
+            description: Created
+  /transactions:
+    post:
+      summary: Creates a category.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/transaction.yaml'
+      responses: 
+        '201':
+          description: Created
