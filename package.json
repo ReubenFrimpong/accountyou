@@ -4,7 +4,7 @@
   "description": "Small businesses account tracker",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "swagger-cli bundle ./docs/openapi.yaml --outfile _build/openapi.yaml --type yaml && nodemon server.js",
     "openapi:build": "swagger-cli bundle ./docs/openapi.yaml --outfile _build/openapi.yaml --type yaml"
   },
   "author": "Reuben Frimpong",
@@ -17,9 +17,9 @@
     "mongoose": "^6.0.6",
     "mongoose-validators": "^0.1.0",
     "morgan": "^1.10.0",
+    "swagger-parser": "^10.0.3",
     "swagger-routes-express": "^3.3.1",
-    "swagger-ui-express": "^4.1.6",
-    "yamljs": "^0.3.0"
+    "swagger-ui-express": "^4.1.6"
   },
   "engines": {
     "node": ">=12"

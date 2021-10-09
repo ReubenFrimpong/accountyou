@@ -1,11 +1,12 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
+const swaggerParser = require('swagger-parser')
 const { connector } = require('swagger-routes-express');
-const YAML = require('yamljs');
 const api = require('./api');
 
-const makeApp = () => {
-  const apiDefinition = YAML.load('./_build/openapi.yaml') // load the api as json
+const makeApp = async () => {
+  const parser = new swaggerParser();
+  const apiDefinition = await parser.validate('./_build/openapi.yaml');
   const connect = connector(api, apiDefinition) // make the connector
   const app = express() // make the app
   // do any other app stuff, such as wire in passport, use cors etc
@@ -18,4 +19,4 @@ const makeApp = () => {
 
   return app;
 }
-module.exports = makeApp();
+module.exports = makeApp;

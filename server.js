@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
-const app = require('./app');
+const makeApp = require('./app');
 const dotenv = require("dotenv");
 const helmet = require('helmet');
-
-app.use(helmet())
 
 process.on('uncaughtException', err=> {
   console.log(err.name,err.message);
@@ -17,8 +15,17 @@ mongoose.connect(process.env.DB_CONNECTION_STRING)
   .then(() => console.log('DB connection successful!'));
 
 const port = process.env.PORT || 3000;
-const server = app.listen(port, () => {
-  console.log(`App running on port ${port}...`);
+
+makeApp()
+  .then(app => {
+    app.use(helmet())
+    app.listen(port)
+  })
+  .then(() => {
+    console.log(`App running on port ${port}...`)
+  })
+  .catch(err => {
+    console.error('caught error', err)
 });
 
 process.on('unhandledRejection', err =>{
