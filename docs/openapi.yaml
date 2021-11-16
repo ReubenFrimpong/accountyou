@@ -5,7 +5,15 @@ info:
   title: API Docs
 servers:
   - url: /api/v1
-  
+components:
+  securitySchemes:
+    JWTAuth: 
+      type: apiKey
+      in: header
+      name: Authorization   
+security:
+  - JWTAuth: []
+
 paths:
   /users:
     get:
@@ -33,17 +41,7 @@ paths:
         '201':
           description: Created
   /categories:
-      post:
-        summary: Creates a category.
-        requestBody:
-          required: true
-          content:
-            application/json:
-              schema:
-                $ref: './schemas/category.yaml'
-        responses: 
-          '201':
-            description: Created
+      $ref: './paths/categories.yaml'
   /transactions:
     post:
       summary: Creates a category.
@@ -56,3 +54,4 @@ paths:
       responses: 
         '201':
           description: Created
+   

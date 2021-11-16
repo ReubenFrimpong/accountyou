@@ -4,16 +4,19 @@
   "description": "Small businesses account tracker",
   "main": "server.js",
   "scripts": {
-    "start": "swagger-cli bundle ./docs/openapi.yaml --outfile _build/openapi.yaml --type yaml && nodemon server.js",
+    "start": "nodemon --inspect server.js",
     "openapi:build": "swagger-cli bundle ./docs/openapi.yaml --outfile _build/openapi.yaml --type yaml"
   },
   "author": "Reuben Frimpong",
   "license": "ISC",
   "dependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
     "bluebird": "^3.7.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.6",
     "mongoose-validators": "^0.1.0",
     "morgan": "^1.10.0",
@@ -23,5 +26,8 @@
   },
   "engines": {
     "node": ">=12"
+  },
+  "devDependencies": {
+    "husky": "^6.0.0"
   }
 }

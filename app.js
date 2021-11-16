@@ -6,7 +6,7 @@ const api = require('./api');
 
 const makeApp = async () => {
   const parser = new swaggerParser();
-  const apiDefinition = await parser.validate('./_build/openapi.yaml');
+  const apiDefinition = await parser.validate('./docs/openapi.yaml');
   const connect = connector(api, apiDefinition) // make the connector
   const app = express() // make the app
   // do any other app stuff, such as wire in passport, use cors etc
