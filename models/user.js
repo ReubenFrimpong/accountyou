@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema({
     required: [true, 'A password is required']
   },
   nextBillingDate: {
+    type: Date,
     required: true,
   },
   isActive: {
@@ -31,5 +32,5 @@ const userSchema = mongoose.Schema({
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;

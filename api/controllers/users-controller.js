@@ -1,12 +1,20 @@
 const jwt = require('jsonwebtoken');
+const User = require('../../models/user');
+const { catchAsync } = require('../utils/catch-async');
 
-exports.getAllUsers = (req, res, next) => {
-  res.json(['User 1', 'User 2', 'User 3']);
+exports.getAllUsers = async (req, res, next) => {
+  const users = await User.find();
+  res.json({
+    data: {
+      users,
+      message: 'Users fetched successfully'
+    }
+  });
 }
 
-exports.createUser =  (req, res, next) => {
+exports.createUser =  catchAsync(async (req, res, next) => {
   const user = new User(req.body);
-  console.log(req)
+  await user.save();
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN
   });
@@ -16,4 +24,25 @@ exports.createUser =  (req, res, next) => {
       user
     }
   });
-};
+});
+
+exports.updateUser = async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+  res.json({
+    data: {
+      user
+    }
+  });
+}
+
+exports.deleteUser = async (req, res, next) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.json({
+    data: {
+      message: 'User deleted successfully'
+    }
+  });
+}

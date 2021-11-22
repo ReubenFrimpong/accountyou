@@ -10,7 +10,8 @@ const makeApp = async () => {
   const connect = connector(api, apiDefinition) // make the connector
   const app = express() // make the app
   // do any other app stuff, such as wire in passport, use cors etc
-
+  // parse application/json. Without this middleware, the body will be empty
+  app.use(express.json());
   app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(apiDefinition));
 
   connect(app); // attach the routes
