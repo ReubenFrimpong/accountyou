@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const { catchAsync } = require('../utils/catch-async');
 
-exports.getAllUsers = async (req, res, next) => {
+exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find();
   res.json({
     data: {
@@ -10,7 +10,7 @@ exports.getAllUsers = async (req, res, next) => {
       message: 'Users fetched successfully'
     }
   });
-}
+});
 
 exports.createUser =  catchAsync(async (req, res, next) => {
   const user = new User(req.body);
@@ -26,7 +26,7 @@ exports.createUser =  catchAsync(async (req, res, next) => {
   });
 });
 
-exports.updateUser = async (req, res, next) => {
+exports.updateUser = catchAsync(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
@@ -36,13 +36,13 @@ exports.updateUser = async (req, res, next) => {
       user
     }
   });
-}
+});
 
-exports.deleteUser = async (req, res, next) => {
+exports.deleteUser = catchAsync(async (req, res, next) => {
   await User.findByIdAndDelete(req.params.id);
   res.json({
     data: {
       message: 'User deleted successfully'
     }
   });
-}
+});
