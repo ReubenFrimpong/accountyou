@@ -14,7 +14,6 @@ get:
 post:
   summary: Creates a user.
   operationId: createUser
-  x-name: body
   requestBody:
     required: true
     content:

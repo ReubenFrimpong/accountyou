@@ -14,6 +14,7 @@ const userSchema = mongoose.Schema({
   },
   password:{
     type: String,
+    select: false,
     required: [true, 'A password is required']
   },
   nextBillingDate: {
@@ -32,5 +33,14 @@ const userSchema = mongoose.Schema({
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
 
+userSchema.pre('save', async function(next) {
+  if(!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 12);
+  next();
+});
+
+userSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
 const User = mongoose.model('User', userSchema);
 module.exports = User;
