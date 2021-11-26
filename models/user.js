@@ -31,7 +31,9 @@ const userSchema = mongoose.Schema({
   createdAt: Date,
   updatedAt: Date,
 },{
-  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
 userSchema.pre('save', async function(next) {
