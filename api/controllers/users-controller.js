@@ -1,17 +1,9 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const { catchAsync } = require('../utils/catch-async');
+const crudFactory = require('../factories/crud-factory');
 
-exports.getAllUsers = catchAsync(async (req, res, next) => {
-  
-  const users = await User.find();
-  res.json({
-    data: {
-      users,
-      message: 'Users fetched successfully'
-    }
-  });
-});
+exports.getAllUsers = crudFactory.getAll(User);
 
 exports.createUser =  catchAsync(async (req, res, next) => {
   const user = new User(req.body);
