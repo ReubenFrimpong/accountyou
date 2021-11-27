@@ -19,6 +19,8 @@ paths:
     $ref: './paths/login.yaml'
   /users:
     $ref: './paths/users.yaml'
+  /users/{id}:
+    $ref: './paths/user.yaml'  
   /categories:
       $ref: './paths/categories.yaml'
   /transactions:

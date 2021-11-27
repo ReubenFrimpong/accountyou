@@ -1,0 +1,39 @@
+patch:
+  summary: Updates a user.
+  operationId: updateUser
+  parameters:
+    - in: path
+      name: id
+      schema:
+        type: string
+      required: true
+      description: The ID of the user
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/user.yaml'
+  responses: 
+    '201':
+      description: User updated
+
+delete:
+  summary: Deletes a user.
+  operationId: deleteUser
+  parameters:
+    - in: path
+      name: id
+      schema:
+        type: string
+      required: true
+      description: The ID of the user
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/user.yaml'
+  responses: 
+    '204':
+      description: User deleted      
