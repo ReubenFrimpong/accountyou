@@ -1,7 +1,6 @@
-parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
-      required: true
-      description: The ID of the user
+- in: path
+  name: id
+  schema:
+    type: string
+  required: true
+  description: The ID of the user

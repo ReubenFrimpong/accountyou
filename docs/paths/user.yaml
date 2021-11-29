@@ -1,13 +1,17 @@
+get:
+  summary: Get a user by ID.
+  operationId: getUser
+  parameters:
+    $ref: '../parameters/id.yaml'
+  responses: 
+    '201':
+      description: User updated
+
 patch:
   summary: Updates a user.
   operationId: updateUser
   parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
-      required: true
-      description: The ID of the user
+    $ref: '../parameters/id.yaml'
   requestBody:
     required: true
     content:
@@ -22,12 +26,7 @@ delete:
   summary: Deletes a user.
   operationId: deleteUser
   parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
-      required: true
-      description: The ID of the user
+    $ref: '../parameters/id.yaml'
   requestBody:
     required: true
     content:

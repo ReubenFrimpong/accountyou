@@ -21,6 +21,7 @@ const userSchema = mongoose.Schema({
   nextBillingDate: {
     type: Date,
     required: true,
+    default: new Date
   },
   isActive: {
     type: Boolean,
@@ -37,7 +38,7 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.pre('save', async function(next) {
-  if(!this.isModified('password')) return next();
+  // if(!this.isModified('password')) return next();
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
