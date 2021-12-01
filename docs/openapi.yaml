@@ -21,18 +21,9 @@ paths:
     $ref: './paths/users.yaml'
   /users/{id}:
     $ref: './paths/user.yaml'  
-  /categories:
-      $ref: './paths/categories.yaml'
-  /transactions:
-    post:
-      summary: Creates a category.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: './schemas/transaction.yaml'
-      responses: 
-        '201':
-          description: Created
+  /disbursements:
+      $ref: './paths/disbursements.yaml'
+  /dues:
+      $ref: './paths/dues.yaml'
+    
    

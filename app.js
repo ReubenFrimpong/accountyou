@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const api = require('./api');
 const AppError = require('./api/utils/app-error');
 const { globalErrorHandler } = require('./api/utils/error-handlers');
-const { auth } = require('./api/middlewares/auth-middleware');
+const { auth, admin } = require('./api/middlewares/auth-middleware');
 
 const makeApp = async () => {
   const parser = new swaggerParser();
@@ -22,6 +22,7 @@ const makeApp = async () => {
   }
   app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(apiDefinition));
   app.use(auth);
+  app.use(admin);
 
   connect(app); // attach the routes
   

@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 const AppError = require('../utils/app-error');
+const User = require('../../models/user');
+const { catchAsync } = require('../utils/catch-async');
 
 exports.auth = (req, res, next) => {
   let token = req.headers.authorization;
@@ -22,3 +24,15 @@ exports.auth = (req, res, next) => {
   }
   
 };
+
+exports.admin = catchAsync(async (req, res, next) => {
+  const { uid } = req.headers;
+  const user = await User.findById(uid);
+  if (!req.url.includes('disbursements')) {
+    return next();
+  }
+  if (user.role !== 'admin') {
+    return next(new AppError('You are not authorized to access this resource', 401))
+  }
+  return next();
+});
