@@ -1,0 +1,25 @@
+get:
+  summary: Get all disbursements
+  operationId: getAllDisbursements
+  responses: 
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema: 
+            type: array
+            items: 
+              type: string
+
+post:
+  summary: Creates a disbursement entry
+  operationId: disburse
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/disbursement.yaml'
+  responses: 
+    '201':
+      description: Created

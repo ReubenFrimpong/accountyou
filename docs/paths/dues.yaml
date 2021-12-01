@@ -1,0 +1,12 @@
+post:
+      summary: Creates an entry for dues.
+      operationId: payDues
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/dues.yaml'
+      responses: 
+        '201':
+          description: Created

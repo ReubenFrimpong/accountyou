@@ -1,0 +1,13 @@
+type: object
+properties:
+  disbursement:
+    type: object
+    properties:
+      userId:
+        type: string
+      amount:
+        type: string
+
+required:
+  - userId
+  - name 

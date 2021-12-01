@@ -1,0 +1,17 @@
+type: object
+properties:
+  dues: 
+    type: object
+    properties:
+      userId:
+        type: string
+      amount:
+        type: number
+        format: float
+      nextDuesDate: 
+        type: string
+      createdAt:
+        type: string
+required:
+  - userId
+  - amount     
