@@ -48,6 +48,12 @@ userSchema.pre('save', async function(next) {
   next();
 });
 
+userSchema.virtual('dues', {
+  ref: 'Dues',
+  foreignField: 'userId',
+  localField: '_id'
+})
+
 userSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };

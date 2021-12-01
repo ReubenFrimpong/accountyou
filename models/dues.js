@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Float = require('mongoose-float').loadType(mongoose, 2);
+const moment = require('moment');
 
 const duesSchema = mongoose.Schema({
   userId:{
@@ -12,11 +13,17 @@ const duesSchema = mongoose.Schema({
     required: [true, 'An amount is required for dues'],
   },
   nextDuesDate:{
-    type: Boolean,
-    default: false
+    type: Date,
   },
 },{
-  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
+
+duesSchema.pre('save', async function(next) {
+  this.nextDuesDate = moment().add(1, 'month');
+  next();
 });
 
 const Dues = mongoose.model('Dues', duesSchema);

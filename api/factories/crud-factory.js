@@ -18,8 +18,8 @@ exports.getAll = Model => catchAsync(async (req, res, next) => {
   sendResponse(res, 200, doc);
 });
 
-exports.getOne = Model => catchAsync(async (req, res, next) => {
-  const doc = await Model.findById(req.params.id);
+exports.getOne = (Model, populate) => catchAsync(async (req, res, next) => {
+  const doc = await Model.findById(req.params.id).populate(populate);
   if (!doc) {
     return next(new AppError('No result found with this ID', 404));
   }

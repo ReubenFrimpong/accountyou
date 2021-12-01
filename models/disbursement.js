@@ -11,7 +11,9 @@ const disbursementSchema = new mongoose.Schema({
     required: [true ,'Category name is required']
   }
 },{
-  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
 const Disbursement = mongoose.model('Disbursement', disbursementSchema);
