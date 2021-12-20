@@ -1,0 +1,6 @@
+get:
+  summary: Get total Dues paid.
+  operationId: totalDuesPaid
+  responses: 
+    '201':
+      description: Total Dues paid

@@ -22,7 +22,6 @@ const makeApp = async () => {
   }
   app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(apiDefinition));
   app.use(auth);
-  app.use(admin);
 
   connect(app); // attach the routes
   

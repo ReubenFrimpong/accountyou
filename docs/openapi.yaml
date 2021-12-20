@@ -25,5 +25,7 @@ paths:
       $ref: './paths/disbursements.yaml'
   /dues:
       $ref: './paths/dues.yaml'
+  /dues/total-dues-paid:
+    $ref: './paths/total-dues-paid.yaml'
     
    

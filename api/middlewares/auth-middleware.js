@@ -24,15 +24,3 @@ exports.auth = (req, res, next) => {
   }
   
 };
-
-exports.admin = catchAsync(async (req, res, next) => {
-  const { uid } = req.headers;
-  const user = await User.findById(uid);
-  if (!req.url.includes('disbursements')) {
-    return next();
-  }
-  if (user.role !== 'admin') {
-    return next(new AppError('You are not authorized to access this resource', 401))
-  }
-  return next();
-});
